@@ -53,7 +53,7 @@ var filtered = students
     .ToList(); // Runs in memory
 ````
 
-  - Database queries → When the related data is accessed in a way that 
+   - Database queries → When the related data is accessed in a way that 
 	EF Core translates into a SQL query and executes it directly 
 	in the database (operates on entities in the database).
 	
