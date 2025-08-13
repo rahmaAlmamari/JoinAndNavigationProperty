@@ -20,8 +20,11 @@ namespace JoinAndNavigationProperty.Models
         [Range(0, 100)]
         public double StudentMark { get; set; }
 
+        // One-to-many relationship with Department ...
         [ForeignKey("department")]
-        public int DepartmentId { get; set; } // Foreign key property for Department
-        public Department department { get; set; } // Navigation property to Department class
+        public int DepartmentId { get; set; } // Foreign key property for Department ... 
+        public Department department { get; set; } // Navigation property to Department class ...
+        // many-to-many relationship with Course ...
+        public ICollection<Course> courses { get; set; } // Navigation property to Course class
     }
 }
