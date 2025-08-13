@@ -4,7 +4,7 @@
 
 **Definition:**
 
-- It is is a property __provided by EF Core__ which you can add
+- It is a property __provided by EF Core__ which you can add
   in your entity class and it __work as pointr to another related entity__.
 - EF Core automatically uses the __foreign key relationships__ to load related 
   data through this property.
