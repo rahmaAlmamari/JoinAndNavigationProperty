@@ -9,5 +9,10 @@ namespace JoinAndNavigationProperty
 {
     public class RDbContext : DbContext
     {
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Data Source=LAPTOP-IUF9HHIH;Initial Catalog=StoreDB;Integrated Security=True;TrustServerCertificate=True");
+        }
+
     }
 }
