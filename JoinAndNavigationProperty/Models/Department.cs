@@ -16,5 +16,7 @@ namespace JoinAndNavigationProperty.Models
         [Required]
         [MaxLength(50)]
         public string DepartmentName { get; set; }
+
+        public ICollection<Student> Students { get; set; } // Navigation property to Student class
     }
 }
