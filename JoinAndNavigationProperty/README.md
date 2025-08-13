@@ -81,7 +81,7 @@ var students = _context.Students
 **Common join types:**
 
 - Inner Join – Returns only matching records.
-- Group Join – Groups matching records from the second sequence.
+- Group Join – creates a group of related items for each element in the first collection/sequence.
 - Left Outer Join – Returns all records from the first sequence, even if no match exists in the second.
 
 **Why It's Important:**
@@ -95,3 +95,80 @@ var students = _context.Students
 - More detailed and less readable than navigation properties.
 - Requires manually specifying join keys.
 - If not written carefully, can be harder to maintain and debug.
+
+**Uasge:**
+
+- Inner join
+
+````csharp
+// Inner join between Students and Departments ...
+var result = _context.Students
+    .Join(_context.Departments,
+          student => student.DepartmentId,
+          department => department.DepartmentId,
+          (student, department) => new
+          {
+              StudentName = student.Name,
+              DepartmentName = department.DepartmentName
+          })
+    .ToList();
+````
+- Left outer join
+
+````csharp
+// Left outer join between Students and Departments ...
+var leftJoin = from dept in _context.Departments
+               join stud in _context.Students
+               on dept.DepartmentId equals stud.DepartmentId
+               into studentGroup
+               from student in studentGroup.DefaultIfEmpty()
+               select new
+               {
+                   Department = dept.DepartmentName,
+                   StudentName = student != null ? student.StudentName : "No Students"
+               };
+
+foreach (var item in leftJoin)
+{
+    Console.WriteLine($"Department: {item.Department} - Student: {item.StudentName}");
+}
+````
+
+- Group join
+
+````csharp
+// Group join between Students and Departments ...
+var groupJoin = from dept in _context.Departments
+                join stud in _context.Students
+                on dept.DepartmentId equals stud.DepartmentId
+                into studentGroup
+                select new
+                {
+                    Department = dept.DepartmentName,
+                    Students = studentGroup
+                };
+
+foreach (var item in groupJoin)
+{
+    Console.WriteLine($"Department: {item.Department}");
+    foreach (var student in item.Students)
+    {
+        Console.WriteLine($"  - {student.StudentName}");
+    }
+}
+````
+
+- Join with filtering 
+
+````csharp
+// Join with filtering ...
+var filtered = _context.Students
+    .Join(_context.Departments,
+          s => s.DepartmentId,
+          d => d.DepartmentId,
+          (s, d) => new { s.Name, d.DepartmentName })
+    .Where(x => x.DepartmentName == "IT")
+    .OrderBy(x => x.Name)
+    .ToList();
+
+````
