@@ -7,9 +7,9 @@ using JoinAndNavigationProperty.Models;
 
 namespace JoinAndNavigationProperty.Repositories
 {
-    public class StudentRepository
+    public class StudentRepository : IStudentRepository
     {
-        private readonly  RDbContext _context;
+        private readonly RDbContext _context;
         public StudentRepository(RDbContext context)
         {
             _context = context;
