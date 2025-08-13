@@ -7,7 +7,7 @@ using JoinAndNavigationProperty.Models;
 
 namespace JoinAndNavigationProperty.Repositories
 {
-    public class ManagerRepository
+    public class ManagerRepository : IManagerRepository
     {
         private readonly RDbContext _context;
         public ManagerRepository(RDbContext context)
