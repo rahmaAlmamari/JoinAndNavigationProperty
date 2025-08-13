@@ -22,7 +22,7 @@ namespace JoinAndNavigationProperty.Repositories
         //to Get Student By Id ...
         public Student GetStudentById(int id)
         {
-            return _context.Students.FirstOrDefault(s => s.Id == id);
+            return _context.Students.FirstOrDefault(s => s.StudentId == id);
         }
         //to Add Student ...
         public void AddStudent(Student student)
