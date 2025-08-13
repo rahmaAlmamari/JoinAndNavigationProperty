@@ -16,5 +16,8 @@ namespace JoinAndNavigationProperty.Models
         [Required]
         [MaxLength(50)]
         public string CourseName { get; set; }
+
+        // many-to-many relationship with Student ...
+        public ICollection<Student> students { get; set; } // Navigation property to Student class ...
     }
 }
