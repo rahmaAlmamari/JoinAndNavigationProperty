@@ -19,5 +19,9 @@ namespace JoinAndNavigationProperty.Models
         [Required]
         [Range(0, 100)]
         public double StudentMark { get; set; }
+
+        [ForeignKey("department")]
+        public int DepartmentId { get; set; } // Foreign key property for Department
+        public Department department { get; set; } // Navigation property to Department class
     }
 }
