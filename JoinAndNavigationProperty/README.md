@@ -63,3 +63,35 @@ var students = _context.Students
     .ToList(); // Runs in DB
 
 ````
+
+## 2. Join
+
+**Definition:**
+
+- A method in LINQ used to combine data from two or more sequences (tables/collections) based on matching key values.
+- In EF Core, Join translates directly into a SQL JOIN statement when querying a database.
+
+**Purpose:**
+
+- To relate data from different sources when:
+  - No navigation property exists between entities.
+  - You want full control over the join condition.
+  - You need to join on fields that are not part of an EF Core relationship.
+
+**Common join types:**
+
+- Inner Join – Returns only matching records.
+- Group Join – Groups matching records from the second sequence.
+- Left Outer Join – Returns all records from the first sequence, even if no match exists in the second.
+
+**Why It's Important:**
+
+- Gives you full control over how two datasets are related.
+- Useful for performance tuning — only the needed fields/records are retrieved.
+- Can be applied to unrelated tables or tables without foreign key constraints.
+
+**Disadvantage:**
+
+- More detailed and less readable than navigation properties.
+- Requires manually specifying join keys.
+- If not written carefully, can be harder to maintain and debug.
