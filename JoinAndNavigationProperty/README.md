@@ -184,3 +184,7 @@ var filtered = _context.Students
 |Requires Relationship in Model? |Yes                             |No                                       |
 |Use Case                        |Simple related data fetching    |Complex joins, multiple unrelated tables |
 |SQL Generated                   |EF generates join automatically |You write join conditions yourself       |
+
+**System ERD**
+
+![System ERD](./Image/TestERD.png)
