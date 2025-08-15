@@ -49,7 +49,7 @@ Console.WriteLine(student.department.DepartmentName); // direct access to relate
 ````csharp
 var students = _context.Students.ToList(); // Loads all
 var filtered = students
-    .Where(s => s.Department.DepartmentName == "IT")
+    .Where(s => s.department.DepartmentName == "IT")
     .ToList(); // Runs in memory
 ````
 
@@ -59,7 +59,7 @@ var filtered = students
 	
 ````csharp
 var students = _context.Students
-    .Where(s => s.Department.DepartmentName == "IT")
+    .Where(s => s.department.DepartmentName == "IT")
     .ToList(); // Runs in DB
 
 ````
