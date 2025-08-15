@@ -108,7 +108,7 @@ var result = _context.Students
           department => department.DepartmentId,
           (student, department) => new
           {
-              StudentName = student.Name,
+              StudentName = student.StudentName,
               DepartmentName = department.DepartmentName
           })
     .ToList();
