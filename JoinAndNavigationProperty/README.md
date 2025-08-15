@@ -38,7 +38,7 @@
 - To directly access related entity data through object references (set and get).
 ````csharp
 var student = _context.Students.First();
-Console.WriteLine(student.Department.DepartmentName); // direct access to related entity ...
+Console.WriteLine(student.department.DepartmentName); // direct access to related entity ...
 
 ````
 - To perform query operations (e.g., filtering, sorting) on related entities.
