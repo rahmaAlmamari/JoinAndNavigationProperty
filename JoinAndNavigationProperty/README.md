@@ -113,26 +113,6 @@ var result = _context.Students
           })
     .ToList();
 ````
-- Left outer join
-
-````csharp
-// Left outer join between Students and Departments ...
-var leftJoin = from dept in _context.Departments
-               join stud in _context.Students
-               on dept.DepartmentId equals stud.DepartmentId
-               into studentGroup
-               from student in studentGroup.DefaultIfEmpty()
-               select new
-               {
-                   Department = dept.DepartmentName,
-                   StudentName = student != null ? student.StudentName : "No Students"
-               };
-
-foreach (var item in leftJoin)
-{
-    Console.WriteLine($"Department: {item.Department} - Student: {item.StudentName}");
-}
-````
 
 - Group join
 
@@ -155,6 +135,27 @@ foreach (var item in groupJoin)
     {
         Console.WriteLine($"  - {student.StudentName}");
     }
+}
+````
+
+- Left outer join
+
+````csharp
+// Left outer join between Students and Departments ...
+var leftJoin = from dept in _context.Departments
+               join stud in _context.Students
+               on dept.DepartmentId equals stud.DepartmentId
+               into studentGroup
+               from student in studentGroup.DefaultIfEmpty()
+               select new
+               {
+                   Department = dept.DepartmentName,
+                   StudentName = student != null ? student.StudentName : "No Students"
+               };
+
+foreach (var item in leftJoin)
+{
+    Console.WriteLine($"Department: {item.Department} - Student: {item.StudentName}");
 }
 ````
 
