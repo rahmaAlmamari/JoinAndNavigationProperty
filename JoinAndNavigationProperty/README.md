@@ -64,6 +64,10 @@ var students = _context.Students
 
 ````
 
+~~NOTE:~~ To use navigation properties effectively, 
+ensure that your query is structured to load related entities. 
+This can be done using methods like `Include()`.
+
 ## 2. Join
 
 **Definition:**
